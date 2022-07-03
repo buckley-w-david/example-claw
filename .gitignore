@@ -14,3 +14,4 @@ build/
 *.egg-info/
 *.sqlite3
 .envrc
+config

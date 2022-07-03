@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.10"
 Flask = "^2.1.2"
 flask-discord-interactions = {git = "https://github.com/buckley-w-david/flask-discord-interactions.git"}
+pyuwsgi = "^2.0.20"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
