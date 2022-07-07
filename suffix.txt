@@ -18,11 +18,15 @@ bright
 brook
 burrow
 call
+caller
 catcher
+cavern
 caw
 chaser
+chime
 claw
 cloud
+color
 creek
 crest
 cry
@@ -41,6 +45,7 @@ eyes
 face
 fall
 fang
+fate
 feather
 fern
 fin
@@ -50,6 +55,7 @@ flame
 flicker
 flight
 flower
+fluff
 foot
 fox
 frost
@@ -57,6 +63,8 @@ fur
 gaze
 glow
 grass
+grave
+grove
 hare
 hawk
 heart
@@ -64,6 +72,7 @@ heather
 hiss
 hollow
 holly
+horizon
 howl
 hurricane
 ice
@@ -77,6 +86,7 @@ light
 lilac
 lily
 lotus
+luck
 mane
 march
 mask
@@ -109,6 +119,7 @@ river
 roar
 root
 rose
+ruin
 runner
 scar
 scream
@@ -118,6 +129,7 @@ shade
 shimmer
 shine
 shore
+shower
 sight
 skip
 sky

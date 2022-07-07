@@ -38,6 +38,7 @@ Bitter
 Black
 Blaze
 Bliss
+Blistering
 Blizzard
 Bloom
 Blossom
@@ -107,6 +108,7 @@ Cloudy
 Clover
 Cobweb
 Cockroach 
+Cocoa
 Cold
 Comfrey
 Cone
@@ -125,6 +127,7 @@ Cress
 Crest 
 Crevice 
 Cricket
+Crocodile
 Crooked
 Crow
 Crystal
@@ -163,6 +166,7 @@ Eagle
 Earth
 Ebony
 Echo
+Eclipse
 Eel
 Egg
 Elk
@@ -177,6 +181,7 @@ Fallow
 Fate
 Fawn
 Feather
+Fennec
 Fennel
 Fern
 Ferret
@@ -228,6 +233,7 @@ Golden
 Goose
 Gorse
 Gourd
+Grackle
 Grass
 Gravel
 Gray
@@ -259,10 +265,12 @@ Holly
 Honey
 Hoot
 Hop
+Horizon
 Hornet
 Horse
 Hound
 Hurricane
+Ibis
 Ice
 Insect
 Iris
@@ -279,6 +287,7 @@ Kestrel
 Kink
 Knot
 Koi
+Ladybird
 Lake
 Lamb
 Larch
@@ -302,6 +311,7 @@ Long
 Lost
 Lotus
 Loud
+Luck
 Lynx
 Maggot
 Magnolia
@@ -310,6 +320,7 @@ Mallow
 Mantis
 Maple
 Marbled
+March
 Marigold
 Marsh
 Meadow
@@ -338,15 +349,18 @@ Mud
 Mumble
 Murky
 Mushroom
+Myth
 Narrow
 Nectar
 Needle
 Nettle
 Newt
 Night
+Nightshade
 Nut
 Oak
 Oat
+Obsidian
 Odd
 Olive
 One
@@ -363,10 +377,12 @@ Parsley
 Patch
 Peace
 Peach
+Peacock
 Peanut
 Pear
 Peat
 Pebble
+Penelope
 Pepper
 Peregrine 
 Periwinkle
@@ -390,6 +406,7 @@ Prickle
 Primrose
 Privet
 Puddle
+Pumpkin
 Puppy
 Quack
 Quail
@@ -423,9 +440,12 @@ Rosemary
 Rowan
 Rubble
 Ruffle
+Ruin
+Ruined
 Running
 Rush
 Russet
+Rust
 Rye
 Sable
 Sage
@@ -435,11 +455,13 @@ Sand
 Sandy
 Sap
 Sapling
+Scar
 Scarlet
 Scatter
 Scorch
 Sea
 Seagull
+Sear
 Sedge
 Seed
 Sequoia
@@ -485,9 +507,12 @@ Speckle
 Spider
 Spike
 Splash
+Spore
 Spot
 Spotted
+Spring
 Spruce
+Squall
 Squirrel
 Stag
 Starling
@@ -507,11 +532,14 @@ Sunny
 Swallow
 Swamp
 Swan
+Sway
+Swaying
 Sweet
 Swift
 Swirl
 Sycamore
 Tadpole
+Tainted
 Tall
 Talon
 Tangle
@@ -539,6 +567,7 @@ Truth
 Tulip
 Tumble
 Tumbling
+Tundra
 Turtle
 Twig
 Twilight
@@ -568,6 +597,7 @@ White
 Whorl
 Wild
 Willow
+Wilting
 Wind
 Wolf
 Wool
