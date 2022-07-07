@@ -19,7 +19,7 @@ def names(interaction: types.ChatInteraction) -> types.InteractionResponse:
     if (options := interaction.data.options):
         value = int(options[0].value) # type: ignore
     else:
-        value = 5
+        value = 10
 
     for _ in range(value):
         names.append(f"{random.choice(prefix).capitalize()}{random.choice(suffix).lower()}")
