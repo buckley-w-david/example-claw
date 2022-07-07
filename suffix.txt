@@ -31,6 +31,7 @@ creek
 crest
 cry
 cub
+current
 daisy
 dance
 dapple
@@ -52,6 +53,7 @@ fin
 fire
 fish
 flame
+flare
 flicker
 flight
 flower
@@ -61,10 +63,12 @@ fox
 frost
 fur
 gaze
+glade
 glow
 grass
 grave
 grove
+gust
 hare
 hawk
 heart
