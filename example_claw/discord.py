@@ -9,10 +9,10 @@ import importlib.resources as pkg_resources
 import example_claw
 
 prefix_corpus = [
-    l.strip() for l in pkg_resources.read_text(example_claw, "prefix.txt").split("\n")
+    line for l in pkg_resources.read_text(example_claw, "prefix.txt").split("\n") if (line := l.strip().lower())
 ]
 suffix_corpus = [
-    l.strip() for l in pkg_resources.read_text(example_claw, "suffix.txt").split("\n")
+    line for l in pkg_resources.read_text(example_claw, "suffix.txt").split("\n") if (line := l.strip().lower())
 ]
 
 discord = Discord()
