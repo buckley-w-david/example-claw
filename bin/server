@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+flask --app example_claw --debug run

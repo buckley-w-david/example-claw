@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+    <title>Exampleclaw</title>
+</head>
+<body>
+  <div id="content">
+    <h1><a href="{{ url_for("admin.index") }}">Exampleclaw Admin</a></h1>
+    <!-- <form action="{{ url_for('admin.refresh') }}", method="post"> -->
+    <!--   <input type="hidden" name="csrf_token" value="{{ csrf_token }}"> -->
+    <!--   <input type="submit" value="Refresh"> -->
+    <!-- </form> -->
+    <div class="lists">
+      <div>
+        <h2>Prefix</h2>
+        <ul id="prefix" class="corpus-list">
+          {% for row in prefixes %}
+          <li class="list-item">
+            <div>
+              {{ row['prefix'] }}
+              <form action="{{ url_for('admin.delete_prefix', prefix=row['prefix']) }}" method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                <input type="submit" value="Delete">
+              </form>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+        <form action="{{ url_for('admin.add_prefix') }}" method="post">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+          <label for="add-prefix">Add Prefix:</label>
+          <input type="text" id="add-prefix" name="prefix">
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+      <div>
+        <h2>Suffix</h2>
+        <ul id="suffix" class="corpus-list">
+          {% for row in suffixes %}
+          <li class="list-item">
+            <div>
+              {{ row['suffix'] }}
+              <form action="{{ url_for('admin.delete_suffix', suffix=row['suffix']) }}" method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                <input type="submit" value="Delete">
+              </form>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+        <form action="{{ url_for('admin.add_suffix') }}" method="post">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+          <label for="add-suffix">Add Suffix:</label>
+          <input type="text" id="add-suffix" name="suffix">
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="flashes">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+</body>
+</html>

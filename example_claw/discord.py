@@ -1,13 +1,15 @@
-import random
 from typing import Optional, List, cast
 
-from flask_discord_interactions import Discord
-from flask_discord_interactions import discord_types as types
+from discord_interactions_flask import Discord
+from discord_interactions_flask import interactions
+from discord_interactions_flask import discord_types as types
+from discord_interactions_flask.helpers import content_response
 
-import importlib.resources as pkg_resources
 
 import example_claw
+from example_claw.database import query_db
 
+import importlib.resources as pkg_resources
 prefix_corpus = [
     line for l in pkg_resources.read_text(example_claw, "prefix.txt").split("\n") if (line := l.strip().lower())
 ]
@@ -18,19 +20,24 @@ suffix_corpus = [
 discord = Discord()
 
 
-def random_name(*, prefix: Optional[str] = None, suffix: Optional[str] = None) -> str:
+def random_names(n: int, *, prefix: Optional[str] = None, suffix: Optional[str] = None) -> list[str]:
     if not prefix:
-        prefix = random.choice(prefix_corpus)
+        prefixes = [row["prefix"] for row in query_db('SELECT prefix FROM prefixes WHERE id IN (SELECT id FROM prefixes ORDER BY RANDOM() LIMIT ?)', (n,))] # type: ignore
+    else:
+        prefixes = [prefix]*n
     if not suffix:
-        suffix = random.choice(suffix_corpus)
-    return f"{prefix.capitalize()}{suffix.lower()}"
+        suffixes = [row["suffix"] for row in query_db('SELECT suffix FROM suffixes WHERE id IN (SELECT id FROM suffixes ORDER BY RANDOM() LIMIT ?)', (n,))] # type: ignore
+    else:
+        suffixes = [suffix]*n
+
+    return [f"{prefix.capitalize()}{suffix.lower()}" for (prefix, suffix) in zip(prefixes, suffixes)] # type: ignore
 
 
 with discord.command("generate") as command:
     command.description = "Special name generation"
 
-    @command.subcommand("suffixes")
-    def suffixes(interaction: types.ChatInteraction) -> types.InteractionResponse:
+    @command.subcommand("suffixes", "Generate suffixes to go with a chosen prefix.")
+    def suffixes(interaction: interactions.ChatInteraction) -> types.InteractionResponse:
         options = cast(List, interaction.data.options)[0].options
         prefix = options[0].value
         if len(options) > 1:
@@ -38,19 +45,11 @@ with discord.command("generate") as command:
         else:
             value = 10
 
-        names = [random_name(prefix=prefix) for _ in range(value)]
+        names = random_names(value, prefix=prefix)
+        return content_response("\n".join(names))
 
-        return types.InteractionResponse(
-            type=types.InteractionCallbackType.CHANNEL_MESSAGE_WITH_SOURCE,
-            data=types.InteractionCallbackDataMessages(
-                content="\n".join(names),
-            ),
-        )
-
-    suffixes.description = "Generate suffixes to go with a chosen prefix."
-
-    @command.subcommand("prefixes")
-    def prefixes(interaction: types.ChatInteraction) -> types.InteractionResponse:
+    @command.subcommand("prefixes", "Generate prefixes to go with a chosen suffix.")
+    def prefixes(interaction: interactions.ChatInteraction) -> types.InteractionResponse:
         options = cast(List, interaction.data.options)[0].options
         suffix = options[0].value
         if len(options) > 1:
@@ -58,16 +57,9 @@ with discord.command("generate") as command:
         else:
             value = 10
 
-        names = [random_name(suffix=suffix) for _ in range(value)]
+        names = random_names(value, suffix=suffix)
 
-        return types.InteractionResponse(
-            type=types.InteractionCallbackType.CHANNEL_MESSAGE_WITH_SOURCE,
-            data=types.InteractionCallbackDataMessages(
-                content="\n".join(names),
-            ),
-        )
-
-    prefixes.description = "Generate prefixes to go with a chosen suffix."
+        return content_response("\n".join(names))
 
     suffixes.add_option(
         types.ApplicationCommandOption(
@@ -97,24 +89,15 @@ with discord.command("generate") as command:
     prefixes.add_option(count)
 
 
-@discord.command()
-def names(interaction: types.ChatInteraction) -> types.InteractionResponse:
+@discord.command(description="Generate names")
+def names(interaction: interactions.ChatInteraction) -> types.InteractionResponse:
     if options := interaction.data.options:
         value = int(options[0].value)  # type: ignore
     else:
         value = 10
 
-    names = [random_name() for _ in range(value)]
-
-    return types.InteractionResponse(
-        type=types.InteractionCallbackType.CHANNEL_MESSAGE_WITH_SOURCE,
-        data=types.InteractionCallbackDataMessages(
-            content="\n".join(names),
-        ),
-    )
-
-
-names.description = "Generate names"
+    names = random_names(value)
+    return content_response("\n".join(names))
 
 arg = types.ApplicationCommandOption(
     type=types.ApplicationCommandOptionType.INTEGER,

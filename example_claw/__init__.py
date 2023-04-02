@@ -16,4 +16,10 @@ def create_app() -> Flask:
 
     app.register_blueprint(admin.bp)
 
+    from example_claw import database
+
+    database.init_db(app)
+
+    app.secret_key = os.environ['EXAMPLE_CLAW_SECRET_KEY']
+
     return app

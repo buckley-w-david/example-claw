@@ -10,8 +10,9 @@ include = ["example_claw/*.txt"]
 [tool.poetry.dependencies]
 python = "^3.10"
 Flask = "^2.1.2"
-flask-discord-interactions = {git = "https://github.com/buckley-w-david/flask-discord-interactions.git"}
+discord-interactions-flask = {git = "https://github.com/buckley-w-david/discord-interactions-flask.git"}
 pyuwsgi = "^2.0.20"
+Flask-HTTPAuth = "^4.7.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
